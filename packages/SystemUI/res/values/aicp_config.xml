@@ -36,4 +36,8 @@
     
     <!-- Update battery info every second when device is charging -->
     <bool name="config_alternateFastchargeInfoUpdate">false</bool>
+    
+    <!-- Notification counter -->
+    <integer name="status_bar_notification_info_maxnum">999</integer>
+
 </resources>
