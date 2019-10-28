@@ -59,14 +59,20 @@ public class Recents implements CoreStartable, CommandQueue.Callbacks, TunerServ
     public void start() {
         mStarted = true;
         mCommandQueue.addCallback(this);
-        mImpl.onStart(mContext);
+        mDefaultImpl.onStart(mContext);
+        if (mSlimImpl != null) {
+            mSlimImpl.onStart(mContext);
+        }
         Dependency.get(TunerService.class).addTunable(this, USE_SLIM_RECENTS);
     }
 
     @Override
     public void onBootCompleted() {
         mBootCompleted = true;
-        mImpl.onBootCompleted();
+        mDefaultImpl.onBootCompleted();
+        if (mSlimImpl != null) {
+            mSlimImpl.onBootCompleted();
+        }
     }
 
     @Override
@@ -156,7 +162,7 @@ public class Recents implements CoreStartable, CommandQueue.Callbacks, TunerServ
         if (mUseSlimRecents) {
             if (mSlimImpl == null) {
                 newCreated = true;
-                mSlimImpl = new RecentController();
+                mSlimImpl = new RecentController(mDefaultImpl);
             }
             newImpl = mSlimImpl;
         } else {
