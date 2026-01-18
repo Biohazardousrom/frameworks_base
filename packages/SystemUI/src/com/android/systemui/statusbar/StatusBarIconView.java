@@ -150,7 +150,6 @@ public class StatusBarIconView extends AnimatedImageView implements StatusIconDi
     @VisibleForTesting float mScaleToFitNewIconSize = 1;
     private StatusBarIcon mIcon;
     @ViewDebug.ExportedProperty private String mSlot;
-    private StatusBarNotification mNotification;
     @Nullable private StatusBarNotification mNotification;
     @Nullable private BundleEntry mBundleEntry;
     private Drawable mNumberBackground;

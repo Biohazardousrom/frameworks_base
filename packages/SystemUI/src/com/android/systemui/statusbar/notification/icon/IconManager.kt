@@ -371,7 +371,6 @@ constructor(
         }
 
     private fun updateIconsSafe(entry: NotificationEntry, forceUpdate: Boolean = false) {
- controller)
         try {
             updateIcons(entry, false, forceUpdate)
         } catch (e: InflationException) {
